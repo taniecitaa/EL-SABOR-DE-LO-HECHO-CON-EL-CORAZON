@@ -1,0 +1,371 @@
+﻿ss<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Mi Repostería – Delicias Artesanales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variables de color de la marca */
+        :root {
+            --color-fondo: #fdf4f8; /* Crema suave */
+            --color-acento: #9c274e; /* Borgoña/Rojo Rosado fuerte */
+            --color-secundario: #d1a9b9; /* Morado/Rosado suave */
+            --color-texto: #333333; /* Gris oscuro */
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            font-family: 'Lato', sans-serif;
+            color: var(--color-texto);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* --- NAVEGACIÓN (Consistencia) --- */
+        header {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: var(--color-acento);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-acento);
+            font-weight: 700;
+            padding: 10px 25px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Destacar el enlace de INICIO */
+        nav a[href="reposteriapro.html"] {
+            font-weight: 900;
+        }
+        nav a[href="reposteriapro.html"]::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%) scaleX(0);
+            height: 3px;
+            width: 80%;
+            background-color: var(--color-acento);
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* --- SECCIÓN HERO (Marco principal) --- */
+        .hero {
+            background: url('https://th.bing.com/th/id/R.5218d6f9a0d84a32ef39d73d63b288ff?rik=p9376L8jD81Geg&pid=ImgRaw&r=0') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Sombra oscura para mejor legibilidad */
+        }
+
+        .hero-contenido {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            max-width: 600px;
+            margin: 10px auto 30px;
+            font-weight: 400;
+        }
+
+        .btn-principal {
+            background-color: var(--color-acento);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-principal:hover {
+            background-color: #7d1c3e;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-acento);
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background-color: var(--color-secundario);
+            border-radius: 2px;
+        }
+
+        /* --- GRID DE CARACTERÍSTICAS (Frames) --- */
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .frame-caracteristica {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .frame-caracteristica:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .frame-caracteristica i {
+            font-size: 3em;
+            color: var(--color-acento);
+            margin-bottom: 15px;
+        }
+
+        .frame-caracteristica h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-acento);
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .frame-caracteristica p {
+            margin: 0;
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* --- GALERÍA DE CATEGORÍAS (Frames de Producto) --- */
+        .galeria-categorias {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .frame-producto {
+            width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .frame-producto:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .frame-producto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .frame-producto:hover img {
+            opacity: 0.9;
+        }
+
+        .producto-info {
+            padding: 20px;
+        }
+
+        .producto-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-acento);
+            margin: 0 0 10px;
+            font-size: 1.8em;
+        }
+
+        .producto-info .tag {
+            display: block;
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Mi Repostería</div>
+        <nav>
+            <a href="reposteriapro.html">INICIO</a>
+            <a href="Tartas.html">TARTAS</a>
+            <a href="Cupcakes.html">CUPCAKES</a>
+            <a href="Contacto.html">CONTACTO</a>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div class="hero">
+            <div class="hero-contenido">
+                <h1>El Sabor de lo Hecho con el Corazón</h1>
+                <p>Postres artesanales, frescos y con ingredientes de la más alta calidad. Tu momento dulce te espera.</p>
+                <a href="Tartas.html" class="btn-principal">¡Haz tu Primer Pedido Hoy!</a>
+            </div>
+        </div>
+
+        <section>
+            <h2>🍰 Explora Nuestras Delicias Artesanales</h2>
+            <div class="galeria-categorias">
+                
+                <a href="Tartas.html" class="frame-producto">
+                    <img src="https://th.bing.com/th/id/R.aa8e3c510397c92e6afca3a90cb8d4c3?rik=%2bjJHrkorvhpwkQ&pid=ImgRaw&r=0" alt="Tartas Personalizadas">
+                    <div class="producto-info">
+                        <span class="tag">Para Celebraciones</span>
+                        <h3>Tartas Únicas</h3>
+                        <p>Pasteles de autor, personalizados para cada evento. Elige tu diseño y sabor.</p>
+                    </div>
+                </a>
+                
+                <a href="Cupcakes.html" class="frame-producto">
+                    <img src="https://th.bing.com/th/id/R.75dc87d8d5145df562ce6326840a3626?rik=T7zWxnD%2bhLfikg&pid=ImgRaw&r=0" alt="Cupcakes y Postres Individuales">
+                    <div class="producto-info">
+                        <span class="tag">Gusto Instantáneo</span>
+                        <h3>Cupcakes de Fantasía</h3>
+                        <p>Pequeñas porciones de felicidad en una variedad de sabores frescos.</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <section style="background-color: white; padding: 60px 20px;">
+            <h2>⭐ La Diferencia Artesanal</h2>
+            <div class="caracteristicas-grid">
+                
+                <div class="frame-caracteristica">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Frescura Garantizada</h3>
+                    <p>Solo usamos ingredientes 100% naturales, sin conservantes artificiales.</p>
+                </div>
+                
+                <div class="frame-caracteristica">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Hecho con Amor</h3>
+                    <p>Cada postre se elabora a mano, cuidando cada detalle de la receta original.</p>
+                </div>
+                
+                <div class="frame-caracteristica">
+                    <i class="fas fa-truck-fast"></i>
+                    <h3>Entrega Rápida</h3>
+                    <p>Recibe tu pedido fresco en la puerta de tu casa, rápido y seguro.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section>
+            <h2>¿Tienes un evento? ¡Te ayudamos!</h2>
+            <p>Contáctanos para pedidos grandes, mesas de postres o solicitudes especiales. Nuestro equipo está listo para crear la pieza central perfecta para tu celebración.</p>
+            <p style="margin-top: 30px;">
+                <a href="Contacto.html" class="btn-principal">Contactar para Pedidos Especiales</a>
+            </p>
+        </section>
+        
+    </main>
+    
+    <footer>
+        <p>Mi Repostería &copy; 2025. Todos los derechos reservados.</p>
+        <p>Visita nuestra sección de <a href="Contacto.html">Contacto</a> para más información.</p>
+    </footer>
+
+</body>
+</html>
